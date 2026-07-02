@@ -38,14 +38,14 @@
         ['label' => 'Solicitudes de carga', 'url' => route('cliente.solicitudes')],
         ['label' => 'Buscar conductor', 'url' => route('cliente.conductores')],
         ['label' => 'Seguimiento', 'url' => route('cliente.seguimiento')],
-        ['label' => 'Mensajes', 'url' => '#'],
-        ['label' => 'Pagos', 'url' => '#'],
-        ['label' => 'Historial', 'url' => '#'],
-        ['label' => 'Calificaciones', 'url' => '#'],
-        ['label' => 'Notificaciones', 'url' => '#'],
-        ['label' => 'Mi perfil', 'url' => '#'],
-        ['label' => 'Seguridad', 'url' => '#'],
-        ['label' => 'Configuracion', 'url' => '#'],
+        ['label' => 'Mensajes', 'url' => route('cliente.mensajes')],
+        ['label' => 'Pagos', 'url' => route('cliente.pagos')],
+        ['label' => 'Historial', 'url' => route('cliente.historial')],
+        ['label' => 'Calificaciones', 'url' => route('cliente.calificaciones')],
+        ['label' => 'Notificaciones', 'url' => route('cliente.notificaciones')],
+        ['label' => 'Mi perfil', 'url' => route('cliente.perfil')],
+        ['label' => 'Seguridad', 'url' => route('cliente.seguridad')],
+        ['label' => 'Configuracion', 'url' => route('cliente.configuracion')],
     ];
 @endphp
 
