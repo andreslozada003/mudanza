@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    window.toggleMobileMenu = () => {
+        document.body.classList.toggle('mobile-menu-open');
+    };
+
     document.querySelectorAll('[data-mobile-menu]').forEach((button) => {
         button.addEventListener('click', () => {
-            document.body.classList.toggle('mobile-menu-open');
+            window.toggleMobileMenu();
         });
     });
 

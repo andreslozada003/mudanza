@@ -49,7 +49,8 @@
         padding-left: 0 !important;
     }
 
-    body > div > aside.bg-slate-950 {
+    body > div > aside.bg-slate-950,
+    body aside.bg-slate-950 {
         position: fixed !important;
         top: 0 !important;
         bottom: 0 !important;
@@ -63,7 +64,8 @@
         box-shadow: 24px 0 50px rgba(15, 23, 42, .35) !important;
     }
 
-    body.mobile-menu-open > div > aside.bg-slate-950 {
+    body.mobile-menu-open > div > aside.bg-slate-950,
+    body.mobile-menu-open aside.bg-slate-950 {
         transform: translateX(0) !important;
     }
 

@@ -65,7 +65,7 @@
         }
         @media (min-width: 1024px) { .mobile-shell { display: none !important; } }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/client-mobile.css') }}?v=2">
+    <link rel="stylesheet" href="{{ asset('css/client-mobile.css') }}?v=3">
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900">
     <div class="mobile-shell fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
@@ -77,7 +77,7 @@
                 <p class="truncate text-sm font-semibold text-slate-500">Puerto Asis</p>
                 <p class="truncate text-base font-bold text-slate-900">Panel cliente</p>
             </div>
-            <button type="button" data-mobile-menu class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-300 text-slate-800" aria-label="Abrir menu">
+            <button type="button" data-mobile-menu onclick="event.stopImmediatePropagation(); document.body.classList.toggle('mobile-menu-open')" class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-300 text-slate-800" aria-label="Abrir menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
             </button>
         </div>
@@ -348,6 +348,6 @@
             link.addEventListener('click', () => document.body.classList.remove('mobile-menu-open'));
         });
     </script>
-    <script src="{{ asset('js/client-mobile.js') }}?v=2"></script>
+    <script src="{{ asset('js/client-mobile.js') }}?v=3"></script>
 </body>
 </html>
