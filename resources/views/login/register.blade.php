@@ -144,24 +144,41 @@
                 <section class="hidden space-y-5" data-step>
                     <div>
                         <p class="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-700">Documento y selfie</p>
-                        <h2 class="mt-2 text-xl font-bold">Carga fotos claras</h2>
+                        <h2 class="mt-2 text-xl font-bold">Captura fotos claras</h2>
+                        <p class="mt-2 text-sm text-slate-500">Usa la camara del celular. Ubica la cedula dentro del marco y tu rostro dentro del ovalo.</p>
                     </div>
+                    <input id="document_front" name="document_front" type="file" accept="image/*" required class="sr-only">
+                    <input id="document_back" name="document_back" type="file" accept="image/*" required class="sr-only">
+                    <input id="selfie" name="selfie" type="file" accept="image/*" required class="sr-only">
+
                     <div class="grid gap-4 sm:grid-cols-3">
-                        <label class="rounded-md border border-dashed border-slate-300 p-4">
-                            <span class="block font-semibold">Frente</span>
-                            <span class="mt-1 block text-sm text-slate-500">Documento completo.</span>
-                            <input name="document_front" type="file" accept="image/*" required class="mt-4 w-full text-sm">
-                        </label>
-                        <label class="rounded-md border border-dashed border-slate-300 p-4">
-                            <span class="block font-semibold">Reverso</span>
-                            <span class="mt-1 block text-sm text-slate-500">Sin reflejos.</span>
-                            <input name="document_back" type="file" accept="image/*" required class="mt-4 w-full text-sm">
-                        </label>
-                        <label class="rounded-md border border-dashed border-slate-300 p-4">
-                            <span class="block font-semibold">Selfie</span>
-                            <span class="mt-1 block text-sm text-slate-500">Rostro visible.</span>
-                            <input name="selfie" type="file" accept="image/*" required class="mt-4 w-full text-sm">
-                        </label>
+                        <button type="button" data-capture-target="document_front" data-capture-mode="document" class="rounded-md border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-emerald-500 hover:bg-emerald-50">
+                            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v11H4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 11h5M7 14h8M15 10h2"/></svg>
+                            </span>
+                            <span class="mt-4 block font-semibold">Frente de tu documento</span>
+                            <span class="mt-1 block text-sm text-slate-500">Documento completo y legible.</span>
+                            <span data-capture-status="document_front" class="mt-3 block text-xs font-semibold text-slate-400">Pendiente</span>
+                        </button>
+                        <button type="button" data-capture-target="document_back" data-capture-mode="document" class="rounded-md border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-emerald-500 hover:bg-emerald-50">
+                            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-pink-50 text-pink-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v11H4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 11h5M7 14h8M15 10h2"/></svg>
+                            </span>
+                            <span class="mt-4 block font-semibold">Reverso de tu documento</span>
+                            <span class="mt-1 block text-sm text-slate-500">Sin reflejos ni sombras.</span>
+                            <span data-capture-status="document_back" class="mt-3 block text-xs font-semibold text-slate-400">Pendiente</span>
+                        </button>
+                        <button type="button" data-capture-target="selfie" data-capture-mode="selfie" class="rounded-md border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-emerald-500 hover:bg-emerald-50">
+                            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-purple-50 text-purple-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/></svg>
+                            </span>
+                            <span class="mt-4 block font-semibold">Selfie</span>
+                            <span class="mt-1 block text-sm text-slate-500">Tu rostro debe estar dentro del ovalo.</span>
+                            <span data-capture-status="selfie" class="mt-3 block text-xs font-semibold text-slate-400">Pendiente</span>
+                        </button>
+                    </div>
+                    <div class="rounded-md bg-emerald-50 p-4 text-sm text-emerald-900">
+                        Tus datos estan protegidos. Las fotos solo se usan para verificar tu identidad.
                     </div>
                 </section>
 
@@ -191,6 +208,50 @@
                 <a href="{{ route('login') }}" class="font-semibold text-emerald-700 hover:text-emerald-800">Inicia sesion</a>
             </p>
         </section>
+
+        <section id="camera-screen" class="fixed inset-0 z-50 hidden bg-zinc-950 text-white">
+            <div class="flex h-full flex-col">
+                <header class="flex items-center justify-between bg-white px-5 py-4 text-slate-950">
+                    <button id="close-camera" type="button" class="rounded-full p-2 hover:bg-slate-100" aria-label="Volver">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <h2 id="camera-title" class="text-lg font-bold">Foto de tu documento</h2>
+                    <span class="text-sm font-semibold text-emerald-700">4 de 5</span>
+                </header>
+
+                <div class="relative min-h-0 flex-1 overflow-hidden">
+                    <video id="camera-video" autoplay playsinline muted class="h-full w-full object-cover"></video>
+                    <canvas id="camera-canvas" class="hidden"></canvas>
+
+                    <div id="document-overlay" class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/35 px-6">
+                        <p class="absolute top-10 text-center text-lg font-medium">Ubica tu documento dentro del marco</p>
+                        <div class="relative aspect-[1.58/1] w-full max-w-md rounded-xl border-4 border-emerald-400 shadow-[0_0_0_999px_rgba(0,0,0,0.25)]">
+                            <span class="absolute -left-1 -top-1 h-8 w-8 rounded-tl-xl border-l-4 border-t-4 border-emerald-300"></span>
+                            <span class="absolute -right-1 -top-1 h-8 w-8 rounded-tr-xl border-r-4 border-t-4 border-emerald-300"></span>
+                            <span class="absolute -bottom-1 -left-1 h-8 w-8 rounded-bl-xl border-b-4 border-l-4 border-emerald-300"></span>
+                            <span class="absolute -bottom-1 -right-1 h-8 w-8 rounded-br-xl border-b-4 border-r-4 border-emerald-300"></span>
+                        </div>
+                        <div class="absolute bottom-28 rounded-full bg-black/45 px-4 py-2 text-sm">Buena iluminacion</div>
+                    </div>
+
+                    <div id="selfie-overlay" class="pointer-events-none absolute inset-0 hidden flex-col items-center justify-center bg-black/25 px-6">
+                        <p class="absolute top-10 text-center text-lg font-medium">Acerca tu cara al ovalo</p>
+                        <div class="h-[430px] w-[300px] max-w-[82vw] rounded-[50%] border-4 border-emerald-400 shadow-[0_0_0_999px_rgba(0,0,0,0.18)]"></div>
+                        <div class="absolute bottom-28 rounded-xl border border-white/15 bg-black/45 p-4 text-sm">
+                            <p>Rostro bien iluminado</p>
+                            <p class="mt-2">Mira al frente</p>
+                            <p class="mt-2">Sin gafas ni gorra</p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="flex items-center justify-between bg-zinc-950 px-8 py-5">
+                    <button id="fallback-file" type="button" class="rounded-full border border-white/20 p-3 text-white/80">Archivo</button>
+                    <button id="capture-photo" type="button" class="h-20 w-20 rounded-full border-4 border-white bg-white shadow-inner ring-4 ring-white/30" aria-label="Tomar foto"></button>
+                    <button id="switch-camera" type="button" class="rounded-full border border-white/20 p-3 text-white/80">Girar</button>
+                </footer>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -203,6 +264,16 @@
         const roleInput = document.getElementById('role');
         const roleNames = { cliente: 'Cliente', conductor: 'Conductor' };
         let currentStep = roleInput.value && roleNames[roleInput.value] ? 1 : 0;
+        let cameraStream = null;
+        let activeCaptureTarget = null;
+        let activeCaptureMode = 'document';
+        let facingMode = 'environment';
+        const cameraScreen = document.getElementById('camera-screen');
+        const cameraVideo = document.getElementById('camera-video');
+        const cameraCanvas = document.getElementById('camera-canvas');
+        const cameraTitle = document.getElementById('camera-title');
+        const documentOverlay = document.getElementById('document-overlay');
+        const selfieOverlay = document.getElementById('selfie-overlay');
 
         function showStep(index) {
             currentStep = index;
@@ -247,6 +318,103 @@
                 button.setAttribute('aria-label', show ? 'Ocultar contrasena' : 'Mostrar contrasena');
                 button.querySelector('[data-eye-open]').classList.toggle('hidden', show);
                 button.querySelector('[data-eye-closed]').classList.toggle('hidden', !show);
+            });
+        });
+
+        async function openCamera(target, mode) {
+            activeCaptureTarget = target;
+            activeCaptureMode = mode;
+            facingMode = mode === 'selfie' ? 'user' : 'environment';
+            cameraTitle.textContent = mode === 'selfie' ? 'Selfie' : (target === 'document_front' ? 'Frente de tu documento' : 'Reverso de tu documento');
+            documentOverlay.classList.toggle('hidden', mode === 'selfie');
+            selfieOverlay.classList.toggle('hidden', mode !== 'selfie');
+            selfieOverlay.classList.toggle('flex', mode === 'selfie');
+            cameraScreen.classList.remove('hidden');
+            await startCamera();
+        }
+
+        async function startCamera() {
+            stopCamera();
+
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode,
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 },
+                    },
+                    audio: false,
+                });
+                cameraVideo.srcObject = cameraStream;
+            } catch (error) {
+                document.getElementById(activeCaptureTarget).click();
+                cameraScreen.classList.add('hidden');
+            }
+        }
+
+        function stopCamera() {
+            if (! cameraStream) {
+                return;
+            }
+
+            cameraStream.getTracks().forEach((track) => track.stop());
+            cameraStream = null;
+        }
+
+        function setCapturedFile(target, blob) {
+            const input = document.getElementById(target);
+            const file = new File([blob], `${target}.jpg`, { type: 'image/jpeg' });
+            const transfer = new DataTransfer();
+            transfer.items.add(file);
+            input.files = transfer.files;
+            markCaptureReady(target);
+        }
+
+        function markCaptureReady(target) {
+            const status = document.querySelector(`[data-capture-status="${target}"]`);
+            status.textContent = 'Capturada';
+            status.classList.remove('text-slate-400');
+            status.classList.add('text-emerald-700');
+        }
+
+        document.querySelectorAll('[data-capture-target]').forEach((button) => {
+            button.addEventListener('click', () => openCamera(button.dataset.captureTarget, button.dataset.captureMode));
+        });
+
+        document.getElementById('capture-photo').addEventListener('click', () => {
+            const width = cameraVideo.videoWidth || 1280;
+            const height = cameraVideo.videoHeight || 720;
+            cameraCanvas.width = width;
+            cameraCanvas.height = height;
+            cameraCanvas.getContext('2d').drawImage(cameraVideo, 0, 0, width, height);
+            cameraCanvas.toBlob((blob) => {
+                setCapturedFile(activeCaptureTarget, blob);
+                stopCamera();
+                cameraScreen.classList.add('hidden');
+            }, 'image/jpeg', 0.92);
+        });
+
+        document.getElementById('close-camera').addEventListener('click', () => {
+            stopCamera();
+            cameraScreen.classList.add('hidden');
+        });
+
+        document.getElementById('switch-camera').addEventListener('click', async () => {
+            facingMode = facingMode === 'environment' ? 'user' : 'environment';
+            await startCamera();
+        });
+
+        document.getElementById('fallback-file').addEventListener('click', () => {
+            document.getElementById(activeCaptureTarget).click();
+        });
+
+        ['document_front', 'document_back', 'selfie'].forEach((id) => {
+            document.getElementById(id).addEventListener('change', () => {
+                if (document.getElementById(id).files.length) {
+                    markCaptureReady(id);
+                    stopCamera();
+                    cameraScreen.classList.add('hidden');
+                }
             });
         });
 
