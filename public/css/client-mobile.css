@@ -13,11 +13,11 @@
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        z-index: 9999 !important;
+        z-index: 9997 !important;
         background: rgba(255, 255, 255, 0.98) !important;
         border-bottom: 1px solid #e2e8f0 !important;
         box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
-        padding: 10px 12px !important;
+        padding: 8px 12px !important;
         backdrop-filter: blur(10px);
     }
 
@@ -27,11 +27,21 @@
         min-height: 44px;
     }
 
+    .mobile-shell .text-base {
+        font-size: .82rem !important;
+        line-height: 1.05 !important;
+    }
+
+    .mobile-shell .text-sm {
+        font-size: .68rem !important;
+        line-height: 1.05 !important;
+    }
+
     body::after {
         content: '';
         position: fixed;
         inset: 0;
-        z-index: 9997;
+        z-index: 9996;
         background: rgba(15, 23, 42, 0.48);
         opacity: 0;
         pointer-events: none;
@@ -52,12 +62,13 @@
     body > div > aside.bg-slate-950,
     body aside.bg-slate-950 {
         position: fixed !important;
-        top: 0 !important;
+        top: 60px !important;
         bottom: 0 !important;
         left: 0 !important;
         z-index: 9998 !important;
         width: min(86vw, 292px) !important;
         max-width: 292px !important;
+        padding-top: 12px !important;
         transform: translateX(-105%) !important;
         transition: transform .22s ease !important;
         overflow-y: auto !important;

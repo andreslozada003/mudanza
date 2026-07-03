@@ -65,7 +65,7 @@
         }
         @media (min-width: 1024px) { .mobile-shell { display: none !important; } }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/client-mobile.css') }}?v=3">
+    <link rel="stylesheet" href="{{ asset('css/client-mobile.css') }}?v=4">
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900">
     <div class="mobile-shell fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
@@ -234,6 +234,6 @@
             link.addEventListener('click', () => document.body.classList.remove('mobile-menu-open'));
         });
     </script>
-    <script src="{{ asset('js/client-mobile.js') }}?v=3"></script>
+    <script src="{{ asset('js/client-mobile.js') }}?v=4"></script>
 </body>
 </html>
