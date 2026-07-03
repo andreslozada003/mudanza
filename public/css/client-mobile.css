@@ -1,0 +1,156 @@
+@media (max-width: 1023px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        background: #f1f5f9;
+    }
+
+    .mobile-shell {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
+        padding: 10px 12px !important;
+        backdrop-filter: blur(10px);
+    }
+
+    .mobile-shell a,
+    .mobile-shell button {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 9997;
+        background: rgba(15, 23, 42, 0.48);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+    }
+
+    body.mobile-menu-open::after {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    body > div.min-h-screen {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    body > div > aside.bg-slate-950 {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        z-index: 9998 !important;
+        width: min(86vw, 292px) !important;
+        max-width: 292px !important;
+        transform: translateX(-105%) !important;
+        transition: transform .22s ease !important;
+        overflow-y: auto !important;
+        box-shadow: 24px 0 50px rgba(15, 23, 42, .35) !important;
+    }
+
+    body.mobile-menu-open > div > aside.bg-slate-950 {
+        transform: translateX(0) !important;
+    }
+
+    main {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 82px 12px 24px !important;
+    }
+
+    main > .flex:first-child {
+        gap: 12px !important;
+    }
+
+    h1,
+    h2 {
+        max-width: 100%;
+        font-size: clamp(1.35rem, 6.4vw, 1.85rem) !important;
+        line-height: 1.14 !important;
+        overflow-wrap: anywhere;
+    }
+
+    h3,
+    p,
+    span,
+    a,
+    button,
+    label,
+    input,
+    select,
+    textarea {
+        overflow-wrap: anywhere;
+    }
+
+    section,
+    article,
+    aside,
+    form,
+    .rounded-lg,
+    .rounded-md {
+        max-width: 100%;
+    }
+
+    button,
+    a.rounded-md,
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    table {
+        min-width: 640px !important;
+        white-space: nowrap;
+    }
+
+    .overflow-x-auto {
+        max-width: calc(100vw - 24px);
+        border-radius: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    [class*="xl:grid-cols"],
+    [class*="lg:grid-cols"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    [class*="md:grid-cols"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .text-3xl {
+        font-size: 1.65rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .p-8 {
+        padding: 1rem !important;
+    }
+
+    .p-6,
+    .p-5 {
+        padding: .9rem !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mobile-shell {
+        display: none !important;
+    }
+}
