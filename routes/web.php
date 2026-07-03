@@ -24,9 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin', [AdminVerificationController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/en-vivo', [AdminVerificationController::class, 'live'])->name('admin.live');
         Route::get('/admin/verificaciones/{verification}', [AdminVerificationController::class, 'show'])->name('admin.verifications.show');
         Route::post('/admin/verificaciones/{verification}/aprobar', [AdminVerificationController::class, 'approve'])->name('admin.verifications.approve');
         Route::post('/admin/verificaciones/{verification}/rechazar', [AdminVerificationController::class, 'reject'])->name('admin.verifications.reject');
+        Route::post('/admin/conductores/{driver}/verificar', [AdminVerificationController::class, 'verifyDriver'])->name('admin.drivers.verify');
+        Route::post('/admin/reportes/{report}/estado', [AdminVerificationController::class, 'updateReport'])->name('admin.reports.update');
     });
     Route::middleware('role:cliente')->group(function () {
         Route::view('/cliente', 'dashboards.cliente')->name('cliente.dashboard');
